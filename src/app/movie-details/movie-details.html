@@ -1,34 +1,36 @@
 <div id="wrapper">
-  @if (status() === 'loading') {
-    <app-loading />
-  } @else if (status() === 'error') {
-    <app-error />
-  } @else if (status() === 'loaded') {
-    <div id="bg" style="background: url('https://image.tmdb.org/t/p/original{{movie()?.backdrop_path}}')"></div>
-    <div class="p-4 flex flex-col gap-5">
-      <div class="flex gap-5 flex-col md:flex-row">
-        <div>
-          <img src="https://image.tmdb.org/t/p/w500/{{movie()?.poster_path}}" class="w-220 sm:w-500" />
-        </div>
-        <div>
-          <h2 class="font-sans text-4xl font-bold">{{movie()?.title}}</h2>
+  @switch(status()) {
+    @case ('loading') {
+      <app-loading />
+    } @case ('error') {
+      <app-error />
+    } @case ('loaded') {
+      <div id="bg" style="background: url('https://image.tmdb.org/t/p/original{{movie()?.backdrop_path}}')"></div>
+      <div class="p-4 flex flex-col gap-5">
+        <div class="flex gap-5 flex-col md:flex-row">
           <div>
-            <div class="pt-1">
-              <b>{{genres()}}</b>
+            <img src="https://image.tmdb.org/t/p/w500/{{movie()?.poster_path}}" class="w-220 sm:w-500" />
+          </div>
+          <div>
+            <h2 class="font-sans text-4xl font-bold">{{movie()?.title}}</h2>
+            <div>
+              <div class="pt-1">
+                <b>{{genres()}}</b>
+              </div>
+              <p class="pt-4">Origin: {{origin()}}</p>
+              <p class="pt-4">{{movie()?.overview}}</p>
+              <p class="pt-4">Released: {{movie()?.release_date | date: 'mediumDate'}}</p>
+              <p class="pt-4">Rating: {{movie()?.vote_average}}/10</p>
             </div>
-            <p class="pt-4">Origin: {{origin()}}</p>
-            <p class="pt-4">{{movie()?.overview}}</p>
-            <p class="pt-4">Released: {{movie()?.release_date | date: 'mediumDate'}}</p>
-            <p class="pt-4">Rating: {{movie()?.vote_average}}/10</p>
           </div>
         </div>
+        <div class="w-full">
+          <button matFab extended routerLink="/">
+            <mat-icon>home</mat-icon>
+            Home
+          </button>
+        </div>
       </div>
-      <div class="w-full">
-        <button matFab extended routerLink="/">
-          <mat-icon>home</mat-icon>
-          Home
-        </button>
-      </div>
-    </div>
+    }
   }
 </div>
