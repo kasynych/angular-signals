@@ -23,14 +23,15 @@
           <app-movie-card [movie]="movie" />
         }
       </div>
-      <div [hidden]="!movies()?.total_results || movies()?.total_results <= 20">
-        <mat-paginator
-          [length]="movies()?.total_results"
-          [pageSize]="20"
-          (page)="handlePageEvent($event)"
-        >
-        </mat-paginator>
-      </div>
     }
   }
 }
+
+<div [hidden]="!movies()?.total_results || movies()?.total_results <= 20">
+  <mat-paginator
+    [length]="movies()?.total_results"
+    [pageSize]="20"
+    (page)="handlePageEvent($event)"
+  >
+  </mat-paginator>
+</div>
