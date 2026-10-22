@@ -10,6 +10,10 @@ import { DatePipe } from '@angular/common';
 import { Loading } from '../loading/loading'
 import { Error } from '../error/error'
 
+/**
+ * This component represents movie details page
+ * when nAvigated using Angular router 
+ */
 @Component({
   imports: [
     MatButtonModule,

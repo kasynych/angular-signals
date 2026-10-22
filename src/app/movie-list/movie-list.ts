@@ -13,6 +13,10 @@ import { Error } from '../error/error'
 import { MovieCard } from '../movie-card/movie-card';
 import { NoResults } from '../no-results/no-results'
 
+/**
+ * This component displays list of movies
+ * received by MovieService
+ */
 @Component({
   imports: [
     MatPaginatorModule,
@@ -55,10 +59,20 @@ export class MovieList {
     })
   }
 
+  /**
+   * Handles Angular Material Desian Pagination component events
+   * 
+   * @param event: PageEvent Event being triggerd on page click event for example
+   */
   handlePageEvent(event: PageEvent) {
     this.moviesService.setPage(event.pageIndex + 1);
   }
 
+  /**
+   * Handles filter kyUp event
+   * 
+   * @param event: KeyboardEvent 
+   */
   onFilterValueChange(event: KeyboardEvent) {
     if(this.debounceTimeout) {
       clearInterval(this.debounceTimeout)
@@ -75,10 +89,17 @@ export class MovieList {
     }, 500)
   }
 
+  /**
+   * Handles event triggered when clicking "X" icon inside filter
+   */
   onClearFilterClick() {
     this.redirectHome();
   }
 
+  /**
+   * Resets MovieService attributes, filter and paginator
+   * Redirects to homepage
+   */
   redirectHome() {
     this.moviesService.setApiUrl(MOVIES_URL);
     this.moviesService.unsetParams()

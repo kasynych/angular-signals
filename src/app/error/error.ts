@@ -2,6 +2,16 @@ import { Component, inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+/**
+ * This component displays Angular Material Design
+ * Snackbar component for error notification
+ * The components navigates to homepage on "Ok" click
+ * 
+ * Usage example:
+ * @example
+ * <app-error />
+ */
+
 @Component({
   imports: [MatSnackBarModule],
   selector: 'app-error',

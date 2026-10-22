@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+ * This component displays Loading message
+ */
+
 @Component({
   imports: [],
   selector: 'app-loading',
